@@ -16,24 +16,13 @@ import { LoadingService } from './core/services/loading/loading.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 loading$: Observable<boolean>;
 
   constructor(public theme: ThemeService, public loadingService: LoadingService, private authService: AuthService, private router: Router) {
     this.loading$ = this.loadingService.loading$;
   }
 
-ngOnInit() {
-  const params = new URLSearchParams(window.location.search);
-  const code = params.get('code');
-
-  if (code) {
-    this.authService.requestToken(code).subscribe(() => {
-      window.history.replaceState({}, document.title, window.location.pathname);
-      this.router.navigate(['/home']);
-    });
-  }
-}
 
 toggleTheme(isDark?: boolean) {
   const html = document.documentElement;

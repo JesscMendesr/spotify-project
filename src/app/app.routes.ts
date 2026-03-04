@@ -10,15 +10,17 @@ export const routes: Routes = [{
     resolve: {
         auth: AuthResolverService
     }
-}, {
-    path: 'authorization',
-    component: AuthorizationComponent
+
 }, {
     path: '',
     component: LoginComponent
 },
 {
     path: 'login',
+    component: LoginComponent
+},
+{
+    path: 'callback',
     component: LoginComponent
 }
 ]
