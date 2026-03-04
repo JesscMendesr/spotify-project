@@ -10,13 +10,12 @@ export const routes: Routes = [{
     resolve: {
         auth: AuthResolverService
     }
-},{
+}, {
     path: 'authorization',
     component: AuthorizationComponent
 }, {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
+    component: LoginComponent
 },
 {
     path: 'login',
