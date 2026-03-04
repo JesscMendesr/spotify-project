@@ -10,7 +10,7 @@ import { LoadingService } from "./loading/loading.service";
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     private clientId = environment.client_id;
-    private redirectUrl = 'https://jesscmendesr.github.io/spotify-project/#/home';
+    private redirectUrl = 'https://jesscmendesr.github.io/spotify-project/home';
 
     private authorizationEndpoint = "https://accounts.spotify.com/authorize";
 
