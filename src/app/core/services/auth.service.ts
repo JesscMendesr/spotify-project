@@ -10,7 +10,7 @@ import { LoadingService } from "./loading/loading.service";
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     private clientId = environment.client_id;
-    private redirectUrl = 'https://jesscmendesr.github.io/spotify-project/callback';
+    private redirectUrl = 'https://spotify-project-ashen.vercel.app/callback';
 
     private authorizationEndpoint = "https://accounts.spotify.com/authorize";
 
