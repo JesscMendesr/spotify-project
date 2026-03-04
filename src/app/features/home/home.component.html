@@ -1,0 +1,82 @@
+<div class="container">
+
+    <mat-toolbar style="justify-content: space-between; align-items: center;">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>SoundLens</span>
+        <app-badget-user [imgUrl]="imgUser"></app-badget-user>
+
+    </mat-toolbar>
+
+    <mat-tab-group>
+        <mat-tab label="Top Artistas">
+
+            <div style="display: flex; flex-direction: column; justify-content: center; margin: 1.5rem; gap: 1rem ">
+                <div style="display: flex; justify-content: center;">
+                    <mat-button-toggle-group value="short_term" name="fontStyle" aria-label="Font Style">
+                        <mat-button-toggle value="short_term">4 semanas</mat-button-toggle>
+                        <mat-button-toggle disabled value="medium_term">6 meses</mat-button-toggle>
+                        <mat-button-toggle disabled value="long_term">1 ano</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+                @for (artist of topArtists; track $index) {
+                <mat-card style="display: flex; row-gap: 1.5rem; border: 1px solid #6d12d6; " *ngIf="artist">
+                    <mat-card-header style="display: flex; align-items: center; ">
+                        <div style="margin-right: 1rem;">
+                            <h1 mat-card-title style="color: #00a748;">#{{ $index + 1 }}</h1>
+                        </div>
+                        <div>
+                            <mat-card-title style="color: #d9ff00;">{{ artist.name }}</mat-card-title>
+                        </div>
+
+                    </mat-card-header>
+                    <mat-card-content>
+                        <img style="width: 100%; max-height: 150px; object-fit: cover; border: 2px solid #00a748;"
+                            [src]="artist?.images?.[0]?.url || ''" alt="Album cover">
+                    </mat-card-content>
+                </mat-card>
+                }
+
+
+            </div>
+        </mat-tab>
+        <mat-tab label="Top Músicas">
+            <div style="display: flex; flex-direction: column; justify-content: center; margin: 1.5rem; gap: 1rem ">
+                <div style="display: flex; justify-content: center;">
+                    <mat-button-toggle-group  value="short_term" name="fontStyle" aria-label="Font Style">
+                        <mat-button-toggle  value="short_term">4 semanas</mat-button-toggle>
+                        <mat-button-toggle disabled value="medium_term">6 meses</mat-button-toggle>
+                        <mat-button-toggle disabled value="long_term">1 ano</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+                @for (track of topTracks; track $index) {
+                <mat-card style="display: flex; row-gap: 1.5rem; border: 1px solid #6d12d6; " *ngIf="track">
+                    <mat-card-header>
+                                                <div style="margin-right: 1rem;">
+                            <h1 mat-card-title style="color: #00a748;">#{{ $index + 1 }}</h1>
+                        </div>
+                        <div>
+                            <mat-card-subtitle>{{ track.album?.name }}</mat-card-subtitle>
+                            <mat-card-title style="color: #d9ff00;">{{ track.name }}</mat-card-title>
+                        </div>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <img style="width: 100%; max-height: 150px; object-fit: cover; border: 2px solid #00a748;"
+                            [src]="track.album?.images?.[0]?.url || ''" alt="Album cover">
+                    </mat-card-content>
+                </mat-card>
+                }
+
+                <mat-card style="display: flex;">
+                    <mat-card-content>Simple card</mat-card-content>
+                </mat-card>
+                <mat-card style="display: flex; flex: 0 0 100px">
+                    <mat-card-content>Simple card</mat-card-content>
+                </mat-card>
+            </div>
+
+        </mat-tab>
+    </mat-tab-group>
+
+</div>

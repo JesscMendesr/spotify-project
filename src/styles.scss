@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use './app/styles/styles_theme-colors.scss' as colors;
+
+html {
+    color-scheme: dark light;
+    @include mat.theme((color: (primary: colors.$primary-palette,
+                tertiary: colors.$tertiary-palette,
+                ),
+            typography: Roboto,
+            density: 0,
+        ));
+}
+
+
+body {
+    background-color: var(--mat-sys-background);
+    margin: 0;
+}
+
+html.dark {
+    color-scheme: dark;
+}

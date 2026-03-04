@@ -1,12 +1,13 @@
 .container {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     margin: 0 auto;
     height: 100vh;
 }
 
-.theme-mode-container {
+.container-button-login{
+    margin: 0 auto !important;
     display: flex;
+    align-items: center;
 }

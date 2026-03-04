@@ -1,0 +1,10 @@
+
+
+img {
+  width: 40px; /* Largura */
+  height: 40px; /* Altura igual à largura */
+  border-radius: 50%; /* Faz o formato redondo */
+  object-fit: cover;
+  border: 1px solid #6d12d6 ; /* Borda opcional para destacar a imagem */
+  display: flex;
+}
