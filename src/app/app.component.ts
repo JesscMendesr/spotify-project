@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { AlbumsService } from './core/services/albums.service';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -16,12 +16,24 @@ import { LoadingService } from './core/services/loading/loading.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 loading$: Observable<boolean>;
 
-  constructor(public theme: ThemeService, public loadingService: LoadingService) {
+  constructor(public theme: ThemeService, public loadingService: LoadingService, private authService: AuthService, private router: Router) {
     this.loading$ = this.loadingService.loading$;
   }
+
+ngOnInit() {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+
+  if (code) {
+    this.authService.requestToken(code).subscribe(() => {
+      window.history.replaceState({}, document.title, window.location.pathname);
+      this.router.navigate(['/home']);
+    });
+  }
+}
 
 toggleTheme(isDark?: boolean) {
   const html = document.documentElement;

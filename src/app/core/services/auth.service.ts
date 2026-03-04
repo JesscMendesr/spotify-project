@@ -10,7 +10,7 @@ import { LoadingService } from "./loading/loading.service";
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     private clientId = environment.client_id;
-    private redirectUrl = 'https://jesscmendesr.github.io/spotify-project/home';
+    private redirectUrl = 'https://jesscmendesr.github.io/spotify-project';
 
     private authorizationEndpoint = "https://accounts.spotify.com/authorize";
 
@@ -48,9 +48,8 @@ export class AuthService {
         window.location.href = authUrl.toString();
     }
 
-    requestToken() {
+    requestToken(code: string): Observable<SpotifyTokenResponse> {
         const url = "https://accounts.spotify.com/api/token";
-        const code = new URLSearchParams(window.location.search).get('code');
         const body = new URLSearchParams({
             client_id: this.clientId,
             grant_type: 'authorization_code',
