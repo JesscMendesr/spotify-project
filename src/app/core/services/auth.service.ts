@@ -10,7 +10,7 @@ import { LoadingService } from "./loading/loading.service";
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     private clientId = environment.client_id;
-    private redirectUrl = 'https://unctuous-synaptically-emeline.ngrok-free.dev/callback';
+    private redirectUrl = 'https://jesscmendesr.github.io/spotify-project/callback';
 
     private authorizationEndpoint = "https://accounts.spotify.com/authorize";
 
